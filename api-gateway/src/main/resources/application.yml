@@ -1,21 +1,23 @@
 zuul:
   routes:
     sensitive-headers:
-    distancia:
-      url: http://localhost:8020
     breweries:
       strip-prefix: false
       url: https://api.openbrewerydb.org
     home:
       url: forward:/home
-    monolito:
-      path: /**
-      url: http://localhost:8010
 
-ribbon:
-  eureka:
-    enabled: false
+search:
+  url: http://search/
 
 logging:
   level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
     org.springframework.cloud.netflix.zuul: DEBUG
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

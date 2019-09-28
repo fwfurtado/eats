@@ -5,7 +5,9 @@
   <packaging>pom</packaging>
   <modules>
     <module>api-gateway</module>
-  </modules>
+    <module>search</module>
+		<module>service-discovery</module>
+	</modules>
   <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -43,6 +45,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>
