@@ -6,14 +6,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.client.loadbalancer.LoadBalancedRetryFactory;
+import org.springframework.cloud.netflix.ribbon.RibbonLoadBalancedRetryFactory;
+import org.springframework.cloud.netflix.ribbon.SpringClientFactory;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.netflix.zuul.filters.post.LocationRewriteFilter;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
+import org.springframework.retry.annotation.EnableRetry;
+import org.springframework.retry.backoff.BackOffPolicy;
+import org.springframework.retry.backoff.ExponentialBackOffPolicy;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.filter.CommonsRequestLoggingFilter;
 
+@EnableRetry
 @EnableDiscoveryClient
 @EnableFeignClients
 @EnableZuulProxy
@@ -54,4 +61,15 @@ public class ApiGatewayApplication {
 
         return filter;
     }
+
+    @Bean
+    LoadBalancedRetryFactory retryFactory(SpringClientFactory factory) {
+        return new RibbonLoadBalancedRetryFactory(factory) {
+            @Override
+            public BackOffPolicy createBackOffPolicy(String service) {
+                return new ExponentialBackOffPolicy();
+            }
+        };
+    }
+
 }

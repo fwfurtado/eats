@@ -7,17 +7,31 @@ zuul:
     home:
       url: forward:/home
 
+
 search:
   url: http://search/
+  ribbon:
+    MaxAutoRetries: 8
+    MaxAutoRetriesNextServer: 1
+    OkToRetryOnAllOperations: true
+    ServerListRefreshInterval: 2000
+    ConnectTimeout: 3000
+    ReadTimeout: 3000
+    retryableStatusCodes: 404,502,500
 
 logging:
   level:
+    org.springframework.retry: DEBUG
     org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
     org.springframework.cloud.netflix.zuul: DEBUG
+
 
 
 management:
   endpoints:
     web:
       exposure:
-        include: "*"
+feign:
+  hystrix:
+    enabled: true
+
