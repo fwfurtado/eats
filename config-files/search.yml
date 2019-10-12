@@ -2,6 +2,9 @@
 spring:
   profiles: prod
 
+search:
+  greeting: Hello!
+
 server:
   port: 0
 
