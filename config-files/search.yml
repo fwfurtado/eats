@@ -4,3 +4,10 @@ spring:
 
 server:
   port: 0
+
+---
+spring:
+  profiles: qa
+
+server:
+  port: 8010
