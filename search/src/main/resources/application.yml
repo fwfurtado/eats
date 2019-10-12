@@ -17,3 +17,6 @@ spring:
           group: search-app
         search-out:
           destination: search
+  rabbitmq:
+    username: root
+    password: 123456

@@ -1,0 +1,18 @@
+
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:fwfurtado/eats.git
+          search-paths: config-files
+
+  profiles:
+    active: git
+server:
+  port: 8888
+
+eureka:
+  client:
+    enabled: false
