@@ -1,0 +1,13 @@
+
+
+geocoder:
+  url: https://geocoder.api.here.com/6.2/geocode.json?&app_id=mBo9L3t3WylfP6nviO75&app_code=e84bUW8lRLstu5w2L1Rxhg&gen=8
+
+zipcode:
+  url: https://viacep.com.br/ws/
+
+server:
+  port: 8500
+logging:
+  level:
+    me.fwfurtado.infra.GeoCoderClient: DEBUG

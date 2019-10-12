@@ -7,6 +7,8 @@
     <module>api-gateway</module>
     <module>search</module>
 		<module>service-discovery</module>
+		<module>restaurant</module>
+		<module>geo</module>
 	</modules>
   <parent>
 		<groupId>org.springframework.boot</groupId>

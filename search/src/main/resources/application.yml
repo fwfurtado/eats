@@ -1,8 +1,19 @@
 server:
-  port: 0
+  port: 8111
+
+
 
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+spring:
+  cloud:
+    stream:
+      bindings:
+        search-in:
+          destination: search
+          group: search-app
+        search-out:
+          destination: search
