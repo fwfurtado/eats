@@ -6,7 +6,7 @@ search:
   greeting: Hello!
 
 server:
-  port: 0
+  port: 8187
 
 ---
 spring:
